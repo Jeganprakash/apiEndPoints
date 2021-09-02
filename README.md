@@ -8,19 +8,23 @@ password:"password"
 }
 ```
 
-to generate new links with accessToken
+### To generate new links with accessToken
 ```
 GET /generateLink  
 Authorization : Bearer accesstoken 
 ```
 
-To serve react files to new Employee
+
+
+### To serve react files to new Employee
 ```
-GET /index/accessToken="tokenString"
+GET /index?accessToken="tokenString"
 ```
 
 
-graphql endpoint for query and mutation by client
+
+
+### Graphql endpoint for query and mutation by client
 
 ```
 POST /graphql
