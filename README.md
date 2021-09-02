@@ -34,4 +34,7 @@ Authorization: Bearer token
 
 
 
+*Graphql Schema is in schema.graphql file*
+
+
 
