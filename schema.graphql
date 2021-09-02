@@ -1,1 +1,116 @@
+scalar Date
 
+scalar Upload
+
+input NewEmployee{
+	name: String!
+	surname: String!
+	dateOfBirth: Date!
+	mobileNumber: String!
+	emailId: String!
+	panNumber: String!
+	aadhaarNumber: String!
+	joiningDate: Date!
+	panImage: Upload!
+	aadhaarImage: Upload!
+	uanNumber: String
+    feedBack:String
+}
+
+
+type EmployeeResponse{
+    id:Int
+	name: String
+	surname: String
+	dateOfBirth: Date
+	mobileNumber: String
+	emailId: String
+	panNumber: String
+	aadhaarNumber: String
+	joiningDate: Date
+	panImageUrl: String
+	aadhaarImageUrl: String
+	uanNumber: String
+  feedBack:String
+  addresses:[AddressResponse]
+  bankAccount:BankAccountResponse
+  dependants:[DependantResponse]
+}
+
+type AddressResponse{
+  address1: String!
+	address2: String
+	district: String!
+	city: String!
+	state: String!
+	pincode: String!
+  addressType:AddressType
+}
+
+input Address{
+	address1: String!
+	address2: String
+	district: String!
+	city: String!
+	state: String!
+	pincode: String!
+    addressType:AddressType!
+}
+
+enum AddressType{
+	PERMANENT,
+    CURRENT,
+    BOTH
+}
+
+enum Gender{
+	MALE,
+    FEMALE,
+    OTHER
+}
+
+input Dependant{
+    fullName:String!,
+    gender: Gender!,
+    relationship:String!,
+    dateOfBirth:Date!
+}
+
+type DependantResponse{
+    fullName:String!,
+    gender: Gender!,
+    relationship:String!,
+    dateOfBirth:Date!
+}
+
+input BankAccount{
+    bankName : String!
+    branchName : String!
+    ifscCode : String!
+    accountNumber : String!
+}
+
+
+
+type BankAccountResponse{
+    bankName : String
+    branchName : String
+    ifscCode : String
+    accountNumber : String
+}
+
+
+type Query{
+    getEmployee(id:Int!):EmployeeResponse
+    getAllEmployee:[EmployeeResponse]
+
+    
+}
+
+type Mutation{
+    employee(employee:NewEmployee,addresses:[Address],bankAccount:BankAccount,dependants:[Dependant]):EmployeeResponse 
+    bankDetail(employeeId:Int!,bankAccount:BankAccount!):BankAccountResponse
+    depandant(employeeId:Int!,dependants:[Dependant]):DependantResponse
+    deleteEmployee(id:Int):Boolean
+
+}
