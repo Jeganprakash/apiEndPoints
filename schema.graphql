@@ -14,12 +14,12 @@ input NewEmployee{
 	panImage: Upload!
 	aadhaarImage: Upload!
 	uanNumber: String
-    feedBack:String
+	feedBack:String
 }
 
 
 type EmployeeResponse{
-    id:Int
+        id:Int
 	name: String
 	surname: String
 	dateOfBirth: Date
@@ -31,20 +31,20 @@ type EmployeeResponse{
 	panImageUrl: String
 	aadhaarImageUrl: String
 	uanNumber: String
-  feedBack:String
-  addresses:[AddressResponse]
-  bankAccount:BankAccountResponse
-  dependants:[DependantResponse]
+        feedBack:String
+        addresses:[AddressResponse]
+        bankAccount:BankAccountResponse
+        dependants:[DependantResponse]
 }
 
 type AddressResponse{
-  address1: String!
+        address1: String!
 	address2: String
 	district: String!
 	city: String!
 	state: String!
 	pincode: String!
-  addressType:AddressType
+        addressType:AddressType
 }
 
 input Address{
@@ -54,17 +54,17 @@ input Address{
 	city: String!
 	state: String!
 	pincode: String!
-    addressType:AddressType!
+        addressType:AddressType!
 }
 
 enum AddressType{
 	PERMANENT,
-    CURRENT,
-    BOTH
+        CURRENT,
+        BOTH
 }
 
 enum Gender{
-	MALE,
+    MALE,
     FEMALE,
     OTHER
 }
@@ -104,7 +104,6 @@ type Query{
     getEmployee(id:Int!):EmployeeResponse
     getAllEmployee:[EmployeeResponse]
 
-    
 }
 
 type Mutation{
