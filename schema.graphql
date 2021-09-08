@@ -50,7 +50,7 @@ type AddressResponse{
         addressType:AddressType
 }
 
-input Address{
+input AddressInput{
 	address1: String!
 	address2: String
 	district: String!
