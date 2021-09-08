@@ -2,7 +2,7 @@ scalar Date
 
 scalar Upload
 
-input NewEmployee{
+input EmployeeInput{
 	name: String!
 	surname: String!
 	dateOfBirth: Date!
@@ -15,6 +15,9 @@ input NewEmployee{
 	aadhaarImage: Upload!
 	uanNumber: String
 	feedBack:String
+	bankAccount:BackAccountInput
+	address:[AddressInput]
+	depandent:[DepandentInput]
 }
 
 
@@ -69,7 +72,7 @@ enum Gender{
     OTHER
 }
 
-input Dependant{
+input DependantInput{
     fullName:String!,
     gender: Gender!,
     relationship:String!,
@@ -83,7 +86,7 @@ type DependantResponse{
     dateOfBirth:Date!
 }
 
-input BankAccount{
+input BankAccountInput{
     bankName : String!
     branchName : String!
     ifscCode : String!
@@ -107,9 +110,6 @@ type Query{
 }
 
 type Mutation{
-    employee(employee:NewEmployee,addresses:[Address],bankAccount:BankAccount,dependants:[Dependant]):EmployeeResponse 
-    bankDetail(employeeId:Int!,bankAccount:BankAccount!):BankAccountResponse
-    depandant(employeeId:Int!,dependants:[Dependant]):DependantResponse
+    add employee(employee:NewEmployee):EmployeeResponse 
     deleteEmployee(id:Int):Boolean
-
 }
